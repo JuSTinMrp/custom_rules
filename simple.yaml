@@ -1,0 +1,7 @@
+id: XSS-DETECTED
+info:
+  - name: simple xss finder
+  - author: 0xjustinmrp
+  - description: checks responses whether chars are reflected or not.
+  - severity: medium
+
