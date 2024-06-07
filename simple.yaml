@@ -1,26 +1,23 @@
 id: XSS-DETECTED
+
 info:
-  - name: simple xss finder
-  - author: 0xjustinmrp
-  - description: checks responses whether chars are reflected or not.
-  - severity: medium
+  name: simple xss finder
+  author: 0xjustinmrp
+  description: checks responses whether chars are reflected or not.
+  severity: low
 
 http:
   - method: GET
-    path: 
+    path:
       - "{{BaseURL}}"
-    
     fuzzing:
       - part: query
-        type: body
+        type: postfix
         mode: single
-
         fuzz:
-          - "'\"><"
-    
+          - "abc'\"><"
     matchers:
       - type: word
         part: body
-        words: 
-          - "'\"><"
-
+        words:
+          - "abc'\"><"
