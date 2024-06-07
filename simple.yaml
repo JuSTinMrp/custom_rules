@@ -5,3 +5,22 @@ info:
   - description: checks responses whether chars are reflected or not.
   - severity: medium
 
+http:
+  - method: GET
+    path: 
+      - "{{BaseURL}}"
+    
+    fuzzing:
+      - part: query
+        type: body
+        mode: single
+
+        fuzz:
+          - "'\"><"
+    
+    matchers:
+      - type: word
+        part: body
+        words: 
+          - "'\"><"
+
